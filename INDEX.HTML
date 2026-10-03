@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Beauty Studio | Alta Cosmética & Maquillaje</title>
+    
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================
+           VARIABLES Y RESET
+           ========================================== */
+        :root {
+            --bg-color: #0f0c11;
+            --surface-color: #1a1622;
+            --surface-accent: rgba(255, 255, 255, 0.05);
+            --text-primary: #f8f6f0;
+            --text-secondary: #c3b9cb;
+            --accent-gold: #e2c08d;
+            --accent-rose: #d88398;
+            --gradient-gold: linear-gradient(135deg, #f3d7ad 0%, #e2c08d 50%, #b88d51 100%);
+            --gradient-rose: linear-gradient(135deg, #f7a8b8 0%, #d88398 100%);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow-glow: 0 10px 30px rgba(216, 131, 152, 0.15);
+            --font-title: 'Cormorant Garamond', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ==========================================
+           HEADER & NAVEGACIÓN
+           ========================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 12, 17, 0.75);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-symbol {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-title);
+            font-weight: 700;
+            color: #0f0c11;
+            font-size: 1.3rem;
+            box-shadow: 0 0 15px rgba(226, 192, 141, 0.4);
+        }
+
+        .logo-text {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--text-primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-gold);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-icon {
+            background: var(--surface-accent);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .btn-icon:hover {
+            background: var(--accent-gold);
+            color: var(--bg-color);
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================
+           HERO SECTION
+           ========================================== */
+        .hero {
+            padding: 160px 5% 80px;
+            min-height: 85vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(216, 131, 152, 0.15) 0%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-title);
+            font-size: 4rem;
+            line-height: 1.1;
+            font-weight: 400;
+            margin-bottom: 25px;
+        }
+
+        .hero-content h1 span {
+            font-style: italic;
+            background: var(--gradient-rose);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        .hero-content p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+            max-width: 500px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            background: var(--gradient-gold);
+            color: #0f0c11;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(226, 192, 141, 0.25);
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(226, 192, 141, 0.4);
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+        }
+
+        .hero-img-card {
+            width: 100%;
+            height: 500px;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--glass-border);
+            background: linear-gradient(180deg, rgba(216,131,152,0.2) 0%, rgba(26,22,34,0.8) 100%),
+                        url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1000&q=80') center/cover;
+        }
+
+        .hero-badge {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: rgba(26, 22, 34, 0.85);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            padding: 20px 25px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* ==========================================
+           GRID DE ESTRUCTURA INNOVADORA (MAIN)
+           ========================================== */
+        .layout-container {
+            padding: 40px 5% 100px;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 40px;
+        }
+
+        /* BARRA LATERAL (ASIDE) */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .widget {
+            background: var(--surface-color);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 25px;
+        }
+
+        .widget-title {
+            font-family: var(--font-title);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Buscador de Tonos (Shade Finder) */
+        .shade-picker {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .shade-circle {
+            aspect-ratio: 1;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .shade-circle:hover, .shade-circle.active {
+            transform: scale(1.15);
+            border-color: var(--accent-gold);
+        }
+
+        .categories-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .categories-list a {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .categories-list a:hover {
+            background: var(--surface-accent);
+            color: var(--text-primary);
+            padding-left: 18px;
+        }
+
+        .categories-list span {
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+
+        /* SECCIÓN PRINCIPAL (MAIN CONTENT) */
+        section {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+            font-weight: 400;
+        }
+
+        /* Grid de Productos */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: var(--surface-color);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 15px;
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(226, 192, 141, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 220px;
+            border-radius: 14px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            background: rgba(15, 12, 17, 0.7);
+            backdrop-filter: blur(10px);
+            color: var(--accent-gold);
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-title {
+            font-family: var(--font-title);
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        .product-desc {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .product-price {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent-gold);
+        }
+
+        .btn-add {
+            background: var(--surface-accent);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-add:hover {
+            background: var(--gradient-gold);
+            color: #0f0c11;
+            font-weight: 600;
+        }
+
+        /* Banner Promocional Innovador */
+        .promo-banner {
+            background: linear-gradient(135deg, rgba(216, 131, 152, 0.2) 0%, rgba(26, 22, 34, 0.9) 100%),
+                        url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=1200&q=80') center/cover;
+            border-radius: 24px;
+            padding: 50px;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .promo-banner h3 {
+            font-family: var(--font-title);
+            font-size: 2.2rem;
+            max-width: 450px;
+        }
+
+        /* ==========================================
+           FOOTER
+           ========================================== */
+        footer {
+            background: #080609;
+            border-top: 1px solid var(--glass-border);
+            padding: 60px 5% 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-col a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--accent-rose);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 992px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 120px;
+            }
+
+            .layout-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                display: none; /* Simplificado para pantallas muy pequeñas */
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABECERA / HEADER -->
+    <header>
+        <div class="logo-container">
+            <div class="logo-symbol">L</div>
+            <div class="logo-text">LuxeBeauty</div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#rostro">Rostro</a></li>
+                <li><a href="#labios">Labios</a></li>
+                <li><a href="#ojos">Ojos</a></li>
+                <li><a href="#colecciones">Colecciones</a></li>
+            </ul>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="btn-icon" title="Buscar">🔍</button>
+            <button class="btn-icon" title="Carrito">🛍️</button>
+        </div>
+    </header>
+
+    <!-- SECCIÓN HERO INTRODUCTORIA -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>El arte de resaltar tu <span>Belleza Única</span></h1>
+            <p>Formulaciones de alta pigmentación, ingredientes orgánicos y acabados profesionales para un resplandor natural e inigualable.</p>
+            <button class="btn-primary">Explorar Colección &rarr;</button>
+        </div>
+
+        <div class="hero-image-wrapper">
+            <div class="hero-img-card"></div>
+            <div class="hero-badge">
+                <span style="font-size: 1.8rem;">✨</span>
+                <div>
+                    <strong style="display: block; font-size: 0.9rem;">Edición Limitada</strong>
+                    <span style="font-size: 0.8rem; color: var(--text-secondary);">Colección Glow Velvet 2026</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENEDOR PRINCIPAL CON ESTRUCTURA INTERACTIVA (ASIDE + SECTION) -->
+    <div class="layout-container">
+
+        <!-- BARRA LATERAL / ASIDE -->
+        <aside>
+            <!-- Widget: Buscador de Tonos -->
+            <div class="widget">
+                <div class="widget-title">
+                    <span>🎨</span> Encuentra tu Tono
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">Selecciona tu subtono de piel para personalizar los resultados:</p>
+                
+                <div class="shade-picker">
+                    <div class="shade-circle active" style="background: #f6e3d4;" title="Porcelana"></div>
+                    <div class="shade-circle" style="background: #e8c5a8;" title="Cálido"></div>
+                    <div class="shade-circle" style="background: #d39e78;" title="Dorado"></div>
+                    <div class="shade-circle" style="background: #8d5b3c;" title="Profundo"></div>
+                </div>
+            </div>
+
+            <!-- Widget: Categorías -->
+            <div class="widget">
+                <div class="widget-title">
+                    <span>✨</span> Categorías
+                </div>
+                <ul class="categories-list">
+                    <li><a href="#">Bases & Correctores <span>(24)</span></a></li>
+                    <li><a href="#">Labiales Velvet <span>(18)</span></a></li>
+                    <li><a href="#">Paletas de Sombras <span>(12)</span></a></li>
+                    <li><a href="#">Iluminadores Líquidos <span>(9)</span></a></li>
+                    <li><a href="#">Cuidado de la Piel <span>(15)</span></a></li>
+                </ul>
+            </div>
+
+            <!-- Widget: Asesoría Virtual -->
+            <div class="widget" style="background: linear-gradient(135deg, rgba(226, 192, 141, 0.1) 0%, var(--surface-color) 100%);">
+                <div class="widget-title">
+                    <span>💬</span> ¿Necesitas Ayuda?
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px;">Reserva una sesión exprés de 15 min con nuestros maquilladores profesionales.</p>
+                <a href="#" style="color: var(--accent-gold); font-weight: 600; font-size: 0.85rem;">Reservar Cita Virtual &rarr;</a>
+            </div>
+        </aside>
+
+        <!-- CONTENIDO PRINCIPAL / MAIN SECTION -->
+        <main style="width: 100%;">
+            <section>
+                <div class="section-header">
+                    <h2>Los Más Deseados</h2>
+                    <a href="#" style="color: var(--accent-gold); font-size: 0.9rem;">Ver todo &rarr;</a>
+                </div>
+
+                <!-- Grid de Productos -->
+                <div class="product-grid">
+                    
+                    <!-- Producto 1 -->
+                    <article class="product-card">
+                        <span class="product-tag">Bestseller</span>
+                        <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=500&q=80" alt="Labial" class="product-img">
+                        <h3 class="product-title">Velvet Silk Lipstick</h3>
+                        <p class="product-desc">Acabado mate aterciopelado de larga duración con ácido hialurónico.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$34.00</span>
+                            <button class="btn-add">Añadir</button>
+                        </div>
+                    </article>
+
+                    <!-- Producto 2 -->
+                    <article class="product-card">
+                        <span class="product-tag">Nuevo</span>
+                        <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=500&q=80" alt="Sombra de ojos" class="product-img">
+                        <h3 class="product-title">Celestial Eye Palette</h3>
+                        <p class="product-desc">12 tonos ultra pigmentados con acabados mate y metalizados.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$62.00</span>
+                            <button class="btn-add">Añadir</button>
+                        </div>
+                    </article>
+
+                    <!-- Producto 3 -->
+                    <article class="product-card">
+                        <img src="https://images.unsplash.com/photo-1599733589046-10c005739ef9?auto=format&fit=crop&w=500&q=80" alt="Base de maquillaje" class="product-img">
+                        <h3 class="product-title">Lumière Skin Foundation</h3>
+                        <p class="product-desc">Cobertura construible con efecto radiante de segunda piel.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$48.00</span>
+                            <button class="btn-add">Añadir</button>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Banner Promocional -->
+                <div class="promo-banner">
+                    <span style="color: var(--accent-rose); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Oferta Exclusiva</span>
+                    <h3>Recibe una Masterclass Gratis con tu compra mayor a $80</h3>
+                    <button class="btn-primary" style="margin-top: 10px;">Obtener Beneficio</button>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <!-- PIE DE PÁGINA / FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo-container" style="margin-bottom: 15px;">
+                    <div class="logo-symbol">L</div>
+                    <div class="logo-text">LuxeBeauty</div>
+                </div>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; max-width: 300px;">
+                    Redefiniendo los estándares de la belleza con productos éticos, libres de crueldad y de calidad profesional.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Comprar</h4>
+                <ul>
+                    <li><a href="#">Rostro</a></li>
+                    <li><a href="#">Ojos</a></li>
+                    <li><a href="#">Labios</a></li>
+                    <li><a href="#">Brochas & Accesorios</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#">Match de Tono Online</a></li>
+                    <li><a href="#">Asesoría Virtual</a></li>
+                    <li><a href="#">Maquillaje para Eventos</a></li>
+                    <li><a href="#">Club de Fidelidad</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Sostenibilidad</h4>
+                <ul>
+                    <li><a href="#">Cruelty-Free</a></li>
+                    <li><a href="#">Ingredientes Orgánicos</a></li>
+                    <li><a href="#">Empaques Reciclables</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 LuxeBeauty Studio. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
